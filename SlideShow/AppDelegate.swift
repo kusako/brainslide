@@ -17,6 +17,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSLog("File open...")
         let dialog = NSOpenPanel()
         
+        dialog.directoryURL = imageFolder
+        
         dialog.title                   = "Choose an image folder"
         dialog.showsResizeIndicator    = true
         dialog.showsHiddenFiles        = false
