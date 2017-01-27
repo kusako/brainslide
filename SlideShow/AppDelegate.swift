@@ -12,12 +12,10 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     var imageFolder: URL?
-    
+ 
     @IBAction func openDocument(_ sender:AnyObject) {
         NSLog("File open...")
         let dialog = NSOpenPanel()
-        
-        dialog.directoryURL = imageFolder
         
         dialog.title                   = "Choose an image folder"
         dialog.showsResizeIndicator    = true
