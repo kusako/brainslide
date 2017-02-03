@@ -12,6 +12,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     var imageFolder: URL?
+    var imagePaths: [URL]?
  
     @IBAction func openDocument(_ sender:AnyObject) {
         NSLog("File open...")
@@ -29,6 +30,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if let result = dialog.url {
                 NSLog("Selected path '\(result)'")
                 self.imageFolder = result
+                self.imagePaths = self.getImagesFromPath(result)
+                
+                if let controller = NSApplication.shared().mainWindow?.contentViewController as! ViewController? {
+                    controller.showFirstImage()
+                }
+                
             } else {
                 NSLog("No path selected")
             }
@@ -46,6 +53,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
     
-    
+    func getImagesFromPath(_ path:URL) -> [URL] {
+        let fm = FileManager.default
+        var result = [URL]()
+        let files = try! fm.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
+        for file in files {
+            if (file.absoluteString.hasSuffix(".jpg")) {
+                result.append(file)
+            }
+        }
+        
+        return result
+    }
 }
 
