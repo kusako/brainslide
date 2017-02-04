@@ -13,6 +13,7 @@
 		282B6C0F1E30F40100072AEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 282B6C0D1E30F40100072AEC /* Main.storyboard */; };
 		282B6C1A1E30F40100072AEC /* SlideShowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282B6C191E30F40100072AEC /* SlideShowTests.swift */; };
 		282B6C251E30F40100072AEC /* SlideShowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282B6C241E30F40100072AEC /* SlideShowUITests.swift */; };
+		ACACE5011E452E310051CA43 /* SlideWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACACE5001E452E310051CA43 /* SlideWindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		282B6C201E30F40100072AEC /* SlideShowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlideShowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		282B6C241E30F40100072AEC /* SlideShowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideShowUITests.swift; sourceTree = "<group>"; };
 		282B6C261E30F40100072AEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACACE5001E452E310051CA43 /* SlideWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				282B6C0B1E30F40100072AEC /* Assets.xcassets */,
 				282B6C0D1E30F40100072AEC /* Main.storyboard */,
 				282B6C101E30F40100072AEC /* Info.plist */,
+				ACACE5001E452E310051CA43 /* SlideWindowController.swift */,
 			);
 			path = SlideShow;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			files = (
 				282B6C0A1E30F40000072AEC /* ViewController.swift in Sources */,
 				282B6C081E30F40000072AEC /* AppDelegate.swift in Sources */,
+				ACACE5011E452E310051CA43 /* SlideWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +500,7 @@
 				282B6C2B1E30F40100072AEC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		282B6C2C1E30F40100072AEC /* Build configuration list for PBXNativeTarget "SlideShowTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +509,7 @@
 				282B6C2E1E30F40100072AEC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		282B6C2F1E30F40100072AEC /* Build configuration list for PBXNativeTarget "SlideShowUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +518,7 @@
 				282B6C311E30F40100072AEC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

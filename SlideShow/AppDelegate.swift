@@ -11,9 +11,8 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    var imageFolder: URL?
-    var imagePaths: [URL]?
- 
+    var viewController: ViewController!
+    
     @IBAction func openDocument(_ sender:AnyObject) {
         NSLog("File open...")
         let dialog = NSOpenPanel()
@@ -29,13 +28,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if (dialog.runModal() == NSModalResponseOK) {
             if let result = dialog.url {
                 NSLog("Selected path '\(result)'")
-                self.imageFolder = result
-                self.imagePaths = self.getImagesFromPath(result)
-                
-                if let controller = NSApplication.shared().mainWindow?.contentViewController as! ViewController? {
-                    controller.showFirstImage()
-                }
-                
+                self.viewController.imageFolder = result
+                self.viewController.imagePaths = self.getImagesFromPath(result)
+                self.viewController.showFirstImage()                
             } else {
                 NSLog("No path selected")
             }
