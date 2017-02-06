@@ -12,6 +12,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     var viewController: ViewController!
+    let allowedFileTypes: Set = ["jpg", "jpeg", "png", "gif", "tiff"]
     
     @IBAction func openDocument(_ sender:AnyObject) {
         NSLog("File open...")
@@ -50,15 +51,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func getImagesFromPath(_ path:URL) -> [URL] {
         let fm = FileManager.default
-        var result = [URL]()
         let files = try! fm.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
-        for file in files {
-            if (file.absoluteString.hasSuffix(".jpg")) {
-                result.append(file)
-            }
+
+        return files.filter { filename in
+            allowedFileTypes.contains(filename.pathExtension.lowercased())
         }
-        
-        return result
     }
 }
 
