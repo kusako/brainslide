@@ -11,32 +11,40 @@ import Cocoa
 class ViewController: NSViewController {
     
     var currentIndex = 0
-    var imageFolder: URL!
-    var imagePaths: [URL]!
+    var imagePaths: [URL] = []
+
+    let allowedFileTypes: Set = ["jpg", "jpeg", "png", "gif", "tif", "tiff"]
 
     @IBOutlet weak var imageView: NSImageView?
-    var appDelegate: AppDelegate!
     
     func nextImage() {
         NSLog("next")
-        currentIndex += 1
-        showImageAtURL((self.imagePaths?[currentIndex])!)
+        if self.imagePaths.count > currentIndex {
+            currentIndex += 1
+            showCurrentImage()
+        }
     }
 
     func previousImage() {
         NSLog("previous")
-        currentIndex -= 1
-        showImageAtURL((self.imagePaths?[currentIndex])!)
+        if currentIndex > 0 {
+            currentIndex -= 1
+            showCurrentImage()
+        }
     }
 
+    func showCurrentImage() {
+        showImageAtURL(self.imagePaths[currentIndex])
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Set background color to black (why, oh why?)
         self.view.wantsLayer = true
         
-        self.appDelegate = NSApplication.shared().delegate as? AppDelegate
-        self.appDelegate?.viewController = self
+        let appDelegate = NSApplication.shared().delegate as? AppDelegate
+        appDelegate?.viewController = self
         
         // Do any additional setup after loading the view.
     }
@@ -51,10 +59,13 @@ class ViewController: NSViewController {
         }
     }
 
-
-    func showFirstImage() {
+    func loadSlides(fromURL: URL) {
+        self.imagePaths = self.getImagesFromPath(fromURL)
         currentIndex = 0
-        showImageAtURL((self.imagePaths?[0])!)
+
+        if !self.imagePaths.isEmpty {
+            self.showCurrentImage()
+        }
     }
     
     func showImageAtURL(_ url: URL) {
@@ -72,5 +83,15 @@ class ViewController: NSViewController {
         
         CATransaction.commit()
     }
+
+    func getImagesFromPath(_ path:URL) -> [URL] {
+        let fm = FileManager.default
+        let files = try! fm.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
+        
+        return files.filter { filename in
+            allowedFileTypes.contains(filename.pathExtension.lowercased())
+        }
+    }
+
 }
 
