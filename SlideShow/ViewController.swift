@@ -88,9 +88,9 @@ class ViewController: NSViewController {
         let fm = FileManager.default
         let files = try! fm.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
         
-        return files.filter { filename in
-            allowedFileTypes.contains(filename.pathExtension.lowercased())
-        }
+        return files.filter( {
+            allowedFileTypes.contains($0.pathExtension.lowercased())
+        })
     }
 
 }

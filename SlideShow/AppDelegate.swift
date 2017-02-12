@@ -11,7 +11,7 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    var viewController: ViewController!
+    var viewController: ViewController?
     
     @IBAction func openDocument(_ sender:AnyObject) {
         NSLog("File open...")
@@ -28,7 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if dialog.runModal() == NSModalResponseOK {
             if let result = dialog.url {
                 NSLog("Selected path '\(result)'")
-                self.viewController.loadSlides(fromURL: result)
+                self.viewController?.loadSlides(fromURL: result)
             } else {
                 NSLog("No path selected")
             }
