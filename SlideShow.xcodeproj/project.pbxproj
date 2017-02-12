@@ -99,10 +99,10 @@
 			children = (
 				282B6C071E30F40000072AEC /* AppDelegate.swift */,
 				282B6C091E30F40000072AEC /* ViewController.swift */,
+				ACACE5001E452E310051CA43 /* SlideWindowController.swift */,
 				282B6C0B1E30F40100072AEC /* Assets.xcassets */,
 				282B6C0D1E30F40100072AEC /* Main.storyboard */,
 				282B6C101E30F40100072AEC /* Info.plist */,
-				ACACE5001E452E310051CA43 /* SlideWindowController.swift */,
 			);
 			path = SlideShow;
 			sourceTree = "<group>";

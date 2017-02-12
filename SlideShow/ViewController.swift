@@ -65,6 +65,8 @@ class ViewController: NSViewController {
 
         if !self.imagePaths.isEmpty {
             self.showCurrentImage()
+            self.view.window?.makeKeyAndOrderFront(self)
+            self.view.window?.toggleFullScreen(self)
         }
     }
     
