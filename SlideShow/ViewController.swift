@@ -43,7 +43,7 @@ class ViewController: NSViewController {
         // Set background color to black (why, oh why?)
         self.view.wantsLayer = true
         
-        let appDelegate = NSApplication.shared().delegate as? AppDelegate
+        let appDelegate = NSApplication.shared.delegate as? AppDelegate
         appDelegate?.viewController = self
         
         // Do any additional setup after loading the view.
@@ -88,7 +88,7 @@ class ViewController: NSViewController {
 
     func getImagesFromPath(_ path:URL) -> [URL] {
         let fm = FileManager.default
-        let files = try! fm.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
+        let files = try! fm.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles).sorted(by: {$0.absoluteString < $1.absoluteString})
         
         return files.filter( {
             allowedFileTypes.contains($0.pathExtension.lowercased())

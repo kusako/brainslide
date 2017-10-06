@@ -25,7 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         dialog.allowsMultipleSelection = false
         dialog.canChooseFiles          = false
         
-        if dialog.runModal() == NSModalResponseOK {
+        if dialog.runModal() == NSApplication.ModalResponse.OK {
             if let result = dialog.url {
                 NSLog("Selected path '\(result)'")
                 self.viewController?.loadSlides(fromURL: result)
