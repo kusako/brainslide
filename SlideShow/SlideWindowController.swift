@@ -25,19 +25,21 @@ class SlideWindowController: NSWindowController {
     }
 
     @IBAction func toggleFullScreen(_ sender: Any?) {
-        
-        guard let window = window else { return }
-        
-        window.toggleFullScreen(self)
+        NSLog("Toggle full screen")
 
+        guard let window = window else { return }
+        NSCursor.hide()
+
+        window.toggleFullScreen(self)
+        
         // NSCursor.setHiddenUntilMouseMoves(window.styleMask.contains(NSFullScreenWindowMask))
 
     }
     
     override func windowDidLoad() {
+        NSLog("Window did load")
         super.windowDidLoad()
     }
-    
-    
+
 }
 

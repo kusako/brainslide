@@ -19,7 +19,7 @@ class ViewController: NSViewController {
     
     func nextImage() {
         NSLog("next")
-        if self.imagePaths.count > currentIndex {
+        if currentIndex < self.imagePaths.count - 1 {
             currentIndex += 1
             showCurrentImage()
         }
@@ -78,7 +78,7 @@ class ViewController: NSViewController {
         CATransaction.setAnimationDuration(0.5)
         
         let transition = CATransition()
-        transition.type = kCATransitionFade
+        transition.type = CATransitionType.fade
         imageView?.layer?.add(transition, forKey: kCATransition)
         
         imageView?.image = image
