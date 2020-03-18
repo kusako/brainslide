@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class SlideWindowController: NSWindowController {
+class SlideWindowController: NSWindowController, NSWindowDelegate {
 
     @IBAction override func moveRight(_ sender: Any?) {
         NSLog("right")
@@ -23,23 +23,21 @@ class SlideWindowController: NSWindowController {
             view.previousImage()
         }
     }
-
-    @IBAction func toggleFullScreen(_ sender: Any?) {
-        NSLog("Toggle full screen")
-
-        guard let window = window else { return }
-        NSCursor.hide()
-
-        window.toggleFullScreen(self)
-        
-        // NSCursor.setHiddenUntilMouseMoves(window.styleMask.contains(NSFullScreenWindowMask))
-
-    }
     
     override func windowDidLoad() {
         NSLog("Window did load")
+        // window?.delegate = self
         super.windowDidLoad()
     }
 
+    func windowDidEnterFullScreen(_ notification: Notification) {
+        NSLog("Entered full Screen")
+        NSCursor.hide()
+    }
+    
+    func windowDidExitFullScreen(_ notification: Notification) {
+        NSLog("Exit full Screen")
+        NSCursor.unhide()
+    }
 }
 
